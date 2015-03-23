@@ -1,0 +1,43 @@
+<!-- The layout for use with iron:router package -->
+
+<template name="layout">
+    <div class="container">
+            <header>
+                {{> nav }}
+            </header>
+
+        {{> yield }}
+    </div>
+</template>
+
+<template name='nav'>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+      </div>
+        {{> navBrand }}
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          {{> navItems }}
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</template>
+
+
+<template name="navBrand">
+  <a class="navbar-brand" href="{{ pathFor 'about' }}">Book App</a>
+</template>
+
+<template name='navItems'>
+    <li>
+        <a href="{{ pathFor 'bookList'}}">Search Book Database</a>
+    </li>
+    <li>
+        <a href="{{ pathFor 'bookAdd'}}">Add a Book</a>
+    </li>
+</template>
+
