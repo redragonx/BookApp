@@ -13,10 +13,17 @@
         <form>
             <div class="row">
                 <div class="form-group">
+                    <label for="sellerName">Seller's name</label>
+                    <input type="text" class="form-control" id="sellerNameField"
+                    placeholder="Enter name" required>
+                </div>
+            
+                <div class="form-group">
                     <label for="sellerEmail">Seller email address</label>
                     <input type="email" class="form-control" id="sellerEmailField"
                     placeholder="Enter email" required>
                 </div>
+
                 <div class="form-group">
                     <label for="sellerTel">Seller phone #</label>
                     <input type="tel" class="form-control" id="sellerTelField"
@@ -47,7 +54,7 @@
                     placeholder="The ISBN?" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Add book</button>        
+            <button id="button" type="submit" class="btn btn-success btn_add">Add book</button>        
         </form>
     </div>
 </template>

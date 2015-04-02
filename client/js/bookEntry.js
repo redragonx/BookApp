@@ -1,8 +1,16 @@
 if (Meteor.isClient) {
+
+  Meteor.subscribe('books');
+
+
+
   // This code only runs on the client
   Template.bookListTable.helpers({
-    books: function () {
-      return Books.find();
-    }
+    
   });
+
+  Template.bookListTable.all_books = function () {
+  	return Books.find();
+  }
+
 }

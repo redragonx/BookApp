@@ -5,11 +5,7 @@
     <div id="title">
         <h1>Book List</h1>
     </div>
-    {{#bookListTable}}
-       {{#each books}}
-         {{> tableRow}}
-       {{/each}}
-    {{/bookListTable}}
+    {{> bookListTable}}
 </template>
 
 <template name="bookListTable">
@@ -17,6 +13,8 @@
       <table class="table">
           <thead>
               <tr>
+                  <th>ISBN</th>
+                  <th>Name</th>
                   <th>Price</th>
                   <th>Condition</th>
                   <th>Seller</th>
@@ -25,7 +23,20 @@
               </tr>
           </thead>
           <tbody>
-              {{> Template.contentBlock}}
+              <!--{{> Template.contentBlock}} commented out for now-->
+              <!--experimental -->
+              {{#each all_books}}
+              <tr>
+                <td>{{this.isbn}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.condition}}</td>
+                <td>{{this.seller}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.email}}</td>
+              </tr>
+              {{/each}}
+              <!-- end experimental -->
           </tbody>
       </table>
   </div>
