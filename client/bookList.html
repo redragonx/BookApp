@@ -5,39 +5,13 @@
     <div id="title">
         <h1>Book List</h1>
     </div>
-    {{> bookListTable}}
+    {{#if isBooksEmpty}}
+       {{> noCollection}}
+    {{else}}
+       {{> reactiveTable collection=allBooksCollection}}
+    {{/if}}
 </template>
 
-<template name="bookListTable">
-    <div class="col-md-12">
-      <table class="table">
-          <thead>
-              <tr>
-                  <th>ISBN</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Condition</th>
-                  <th>Seller</th>
-                  <th>Seller's phone #</th>
-                  <th>Seller's email</th>
-              </tr>
-          </thead>
-          <tbody>
-              <!--{{> Template.contentBlock}} commented out for now-->
-              <!--experimental -->
-              {{#each all_books}}
-              <tr>
-                <td>{{this.isbn}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.price}}</td>
-                <td>{{this.condition}}</td>
-                <td>{{this.seller}}</td>
-                <td>{{this.phone}}</td>
-                <td>{{this.email}}</td>
-              </tr>
-              {{/each}}
-              <!-- end experimental -->
-          </tbody>
-      </table>
-  </div>
+<template name="noCollection">
+  <p style="text-align: center; font-size: 200%">There are no books, please add one.</p>
 </template>

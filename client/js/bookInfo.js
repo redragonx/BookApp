@@ -2,8 +2,15 @@ if (Meteor.isClient) {
 	
 	Meteor.subscribe('books');
 
-	Template.bookInfo.helpers({
-    	
+	Template.bookList.helpers({
+		
+		isBooksEmpty: function () {
+			if (Books.find().fetch().length == 0)
+			{
+				return true;
+			}
+			return false;
+		}    	
     });
 
     Template.bookInfo.events({
@@ -18,21 +25,27 @@ if (Meteor.isClient) {
 	    	var seller = document.getElementById("sellerNameField").value;
 	    	var phone = document.getElementById("sellerTelField").value;
 	    	var email = document.getElementById("sellerEmailField").value;
-	    	// Add the book to the database
-	    	Books.insert({
-	    		isbn: bookISBN,
-	    		name: bookName, 
-	    		price: price, 
-	    		condition: condition, 
-	    		seller: seller, 
-	    		phone: phone, 
-	    		email: email
-	    	});
-
-	     }
-
+	    
+	    	// Simple form check...
+	    	if (bookISBN != "" &&
+	    	 bookName != "" &&
+	    	 price != "" &&
+	    	 condition != "" &&
+	    	 seller != "" &&
+	    	 phone != "" &&
+	    	 email != "")
+	    	{
+	    		// Add the book to the database
+		    	Books.insert({
+		    		isbn: bookISBN,
+		    		name: bookName, 
+		    		price: price, 
+		    		condition: condition, 
+		    		seller: seller, 
+		    		phone: phone, 
+		    		email: email
+		    	});
+		    }
+		}
     });
-
-
-
 }
